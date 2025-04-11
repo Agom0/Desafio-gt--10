@@ -5,7 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sabores da Vila</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+      .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+      .filters button {
+        margin: 0.5rem;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+      }
+      .card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .card.hidden {
+        display: none;
+      }
+    </style>
   </head>
+
   <body>
     <header>
       <h1>Sabores da Vila</h1>
@@ -26,150 +47,169 @@
         </p>
 
         <div class="filters">
-          <button class="active">Todos</button>
-          <button>Entradas</button>
-          <button>Pratos Principais</button>
-          <button>Sobremesas</button>
-          <button>Bebidas</button>
+          <button class="" onclick="filterMenu('todos')">Todos</button>
+          <button onclick="filterMenu('entrada')">Entradas</button>
+          <button onclick="filterMenu('principal')">Pratos Principais</button>
+          <button onclick="filterMenu('sobremesa')">Sobremesas</button>
+          <button onclick="filterMenu('bebida')">Bebidas</button>
         </div>
 
         <div class="menu-grid">
-            <div class="card">
-              <div class="imagem">
-                <img src="./img/pexels-jankao-11190138.jpg" alt="Risoto de Cogumelos">
-
-              </div>
-              <div class="card-content">
-                <h3>Risoto de Cogumelos <span class="price">R$ 42,90</span></h3>
-                <p>Arroz cremoso com cogumelos frescos, parmesão e vinho branco.</p>
-              </div>
+          <div class="card entrada">
+            <div class="imagem">
+              <img src="img/pexels-julieaagaard-2097090.jpg" alt="Salada Caesar">
             </div>
-          
-            <div class="card">
-              <div class="imagem">
-                <img src="img/pexels-julieaagaard-2097090.jpg" alt="Salada Caesar">
-              </div>
-              
-              <div class="card-content">
-                <h3>Salada Caesar <span class="price">R$ 35,90</span></h3>
-                <p>Folhas crocantes, frango grelhado, parmesão e molho caesar.</p>
-              </div>
-            </div>
-          
-            <div class="card">
-              <div class="imagem">
-                <img src="img/pexels-orlovamaria-4969892.jpg" alt="Bruschetta de Tomate">
-              </div>
-              
-              <div class="card-content">
-                <h3>Bruschetta de Tomate <span class="price">R$ 28,90</span></h3>
-                <p>Pão tostado com tomate, manjericão e azeite extravirgem.</p>
-              </div>
-            </div>
-          
-            <div class="card">
-              <div class="imagem">
-                <img src="img/pexels-ajit-shahu-1794732582-28321265.jpg" alt="Filé ao Molho Madeira">
-
-              </div>
-              <div class="card-content">
-                <h3>Filé ao Molho Madeira <span class="price">R$ 49,90</span></h3>
-                <p>Filé mignon ao molho madeira com purê de batata rústico.</p>
-              </div>
-            </div>
-          
-            <div class="card">
-              <div class="imagem">
-                <img src="img/istockphoto-493700002-612x612.jpg" alt="Lasanha de Frango">
-
-              </div>
-              <div class="card-content">
-                <h3>Lasanha de Frango <span class="price">R$ 36,50</span></h3>
-                <p>Camadas de massa, frango desfiado, molho branco e queijo.</p>
-              </div>
-            </div>
-          
-            <div class="card">
-              <div class="imagem">
-                <img src="img/pexels-dam-i-2147761795-29748127.jpg" alt="Salmão Grelhado">
-
-              </div>
-              <div class="card-content">
-                <h3>Salmão Grelhado <span class="price">R$ 58,00</span></h3>
-                <p>Posta de salmão com legumes ao vapor e molho de ervas.</p>
-              </div>
-            </div>
-          
-            <div class="card">
-              <div class="imagem">
-                <img src="img/pexels-polina-tankilevitch-5419336.jpg" alt="Penne ao Pesto">
-
-              </div>
-              <div class="card-content">
-                <h3>Penne ao Pesto <span class="price">R$ 31,90</span></h3>
-                <p>Macarrão penne com molho pesto caseiro e queijo parmesão.</p>
-              </div>
-            </div>
-          
-            <div class="card">
-              <div class="imagem">
-                <img src="img/istockphoto-488320382-612x612.jpg" alt="Petit Gâteau">
-
-              </div>
-              <div class="card-content">
-                <h3>Petit Gâteau <span class="price">R$ 22,00</span></h3>
-                <p>Bolo de chocolate com recheio quente e sorvete de creme.</p>
-              </div>
-            </div>
-          
-            <div class="card">
-              <div class="imagem">
-                <img src="img/pexels-photo-15867169.webp" alt="Pudim de Leite">
-
-              </div>
-              <div class="card-content">
-                <h3>Pudim de Leite <span class="price">R$ 14,90</span></h3>
-                <p>Receita tradicional com calda de caramelo feita na hora.</p>
-              </div>
-            </div>
-          
-            <div class="card">
-              <div class="imagem">
-                <img src="img/pexels-photo-8215110.jpeg" alt="Suco de Frutas">
-
-              </div>
-              <div class="card-content">
-                <h3>Suco de Frutas <span class="price">R$ 9,50</span></h3>
-                <p>Sabores naturais de laranja, manga, melancia ou abacaxi.</p>
-              </div>
-            </div>
-          
-            <div class="card">
-              <div class="imagem">
-                <img src="img/pexels-photo-2396220.jpeg" alt="Café Espresso">
-
-              </div>
-              <div class="card-content">
-                <h3>Café Espresso <span class="price">R$ 6,00</span></h3>
-                <p>Café encorpado e aromático preparado na hora.</p>
-              </div>
-            </div>
-          
-            <div class="card">
-              <div class="imagem">
-                <img src="img/pexels-photo-4085480.webp" alt="Mojito">
-
-              </div>
-              <div class="card-content">
-                <h3>Mojito <span class="price">R$ 18,00</span></h3>
-                <p>Coquetel refrescante de rum, hortelã, limão e água com gás.</p>
-              </div>
+            <div class="card-content">
+              <h3>Salada Caesar <span class="price">R$ 35,90</span></h3>
+              <p>Folhas crocantes, frango grelhado, parmesão e molho caesar.</p>
             </div>
           </div>
-=          
+
+          <div class="card entrada">
+            <div class="imagem">
+              <img src="img/pexels-orlovamaria-4969892.jpg" alt="Bruschetta de Tomate">
+            </div>
+            <div class="card-content">
+              <h3>Bruschetta de Tomate <span class="price">R$ 28,90</span></h3>
+              <p>Pão tostado com tomate, manjericão e azeite extravirgem.</p>
+            </div>
+          </div>
+
+          <div class="card principal">
+            <div class="imagem">
+              <img src="img/pexels-jankao-11190138.jpg" alt="Risoto de Cogumelos">
+            </div>
+            <div class="card-content">
+              <h3>Risoto de Cogumelos <span class="price">R$ 42,90</span></h3>
+              <p>Arroz cremoso com cogumelos frescos, parmesão e vinho branco.</p>
+            </div>
+          </div>
+
+          <div class="card principal">
+            <div class="imagem">
+              <img src="img/pexels-ajit-shahu-1794732582-28321265.jpg" alt="Filé ao Molho Madeira">
+            </div>
+            <div class="card-content">
+              <h3>Filé ao Molho Madeira <span class="price">R$ 49,90</span></h3>
+              <p>Filé mignon ao molho madeira com purê de batata rústico.</p>
+            </div>
+          </div>
+
+          <div class="card principal">
+            <div class="imagem">
+              <img src="img/istockphoto-493700002-612x612.jpg" alt="Lasanha de Frango">
+            </div>
+            <div class="card-content">
+              <h3>Lasanha de Frango <span class="price">R$ 36,50</span></h3>
+              <p>Camadas de massa, frango desfiado, molho branco e queijo.</p>
+            </div>
+          </div>
+
+          <div class="card principal">
+            <div class="imagem">
+              <img src="img/pexels-dam-i-2147761795-29748127.jpg" alt="Salmão Grelhado">
+            </div>
+            <div class="card-content">
+              <h3>Salmão Grelhado <span class="price">R$ 58,00</span></h3>
+              <p>Posta de salmão com legumes ao vapor e molho de ervas.</p>
+            </div>
+          </div>
+
+          <div class="card principal">
+            <div class="imagem">
+              <img src="img/pexels-polina-tankilevitch-5419336.jpg" alt="Penne ao Pesto">
+            </div>
+            <div class="card-content">
+              <h3>Penne ao Pesto <span class="price">R$ 31,90</span></h3>
+              <p>Macarrão penne com molho pesto caseiro e queijo parmesão.</p>
+            </div>
+          </div>
+
+          <div class="card sobremesa">
+            <div class="imagem">
+              <img src="img/istockphoto-488320382-612x612.jpg" alt="Petit Gâteau">
+            </div>
+            <div class="card-content">
+              <h3>Petit Gâteau <span class="price">R$ 22,00</span></h3>
+              <p>Bolo de chocolate com recheio quente e sorvete de creme.</p>
+            </div>
+          </div>
+
+          <div class="card sobremesa">
+            <div class="imagem">
+              <img src="img/pexels-photo-15867169.webp" alt="Pudim de Leite">
+            </div>
+            <div class="card-content">
+              <h3>Pudim de Leite <span class="price">R$ 14,90</span></h3>
+              <p>Receita tradicional com calda de caramelo feita na hora.</p>
+            </div>
+          </div>
+
+          <div class="card bebida">
+            <div class="imagem">
+              <img src="img/pexels-photo-8215110.jpeg" alt="Suco de Frutas">
+            </div>
+            <div class="card-content">
+              <h3>Suco de Frutas <span class="price">R$ 9,50</span></h3>
+              <p>Sabores naturais de laranja, manga, melancia ou abacaxi.</p>
+            </div>
+          </div>
+
+          <div class="card bebida">
+            <div class="imagem">
+              <img src="img/pexels-photo-2396220.jpeg" alt="Café Espresso">
+            </div>
+            <div class="card-content">
+              <h3>Café Espresso <span class="price">R$ 6,00</span></h3>
+              <p>Café encorpado e aromático preparado na hora.</p>
+            </div>
+          </div>
+
+          <div class="card bebida">
+            <div class="imagem">
+              <img src="img/pexels-photo-4085480.webp" alt="Mojito">
+            </div>
+            <div class="card-content">
+              <h3>Mojito <span class="price">R$ 18,00</span></h3>
+              <p>Coquetel refrescante de rum, hortelã, limão e água com gás.</p>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 
     <footer>© 2025 Sabor & Arte - Todos os direitos reservados</footer>
+
+    <a
+    href="https://wa.me/5511999999999"
+    class="whatsapp-float"
+    target="_blank"
+    aria-label="Fale conosco pelo WhatsApp"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      width="28"
+      height="28"
+      fill="white"
+      style="margin-right: 8px;"
+    >
+      <path d="M16.001 2.003c-7.72 0-13.998 6.277-13.998 14.001 0 2.478.66 4.892 1.915 7.015L2 30l7.187-1.882c2.056 1.132 4.388 1.728 6.813 1.728h.001c7.721 0 13.998-6.276 13.998-13.997.001-7.724-6.276-14.001-13.998-14.001zM16 27.996h-.001c-2.127 0-4.209-.569-6.025-1.645l-.433-.256-4.263 1.116 1.138-4.152-.282-.426c-1.197-1.813-1.83-3.924-1.83-6.126 0-6.212 5.048-11.261 11.263-11.261 6.212 0 11.261 5.049 11.261 11.261 0 6.214-5.049 11.259-11.261 11.259zm6.307-8.396c-.343-.171-2.03-1.001-2.346-1.113-.314-.115-.543-.171-.771.172s-.885 1.113-1.086 1.34c-.2.228-.4.257-.743.086-.343-.171-1.448-.533-2.758-1.7-1.02-.91-1.709-2.033-1.908-2.376-.2-.343-.021-.527.15-.7.154-.152.343-.4.515-.6.171-.2.229-.343.343-.571.114-.228.057-.428-.028-.6-.086-.172-.771-1.857-1.056-2.547-.278-.667-.561-.576-.771-.586-.2-.009-.429-.011-.657-.011s-.6.086-.914.428c-.314.343-1.2 1.172-1.2 2.857s1.228 3.309 1.4 3.537c.171.228 2.419 3.692 5.867 5.179.82.354 1.46.566 1.96.723.823.262 1.57.225 2.158.137.658-.098 2.03-.829 2.317-1.63.286-.8.286-1.485.2-1.63-.085-.143-.314-.228-.657-.4z"/>
+    </svg>
+    <span style="color: white; font-weight: bold;">Fale conosco</span>
+  </a>
+
+    <script>
+      function filterMenu(category) {
+        document.querySelectorAll('.card').forEach(card => {
+          card.classList.remove('hidden');
+          if (category !== 'todos' && !card.classList.contains(category)) {
+            card.classList.add('hidden');
+          }
+        });
+      }
+    </script>
+
+    
   </body>
 </html>
